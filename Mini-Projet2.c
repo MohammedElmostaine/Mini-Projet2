@@ -57,7 +57,7 @@ int main(){
             case 5:
                 supprimer();
                 break;
-            case 6:
+            case 0:
                 
                 break;
     
@@ -69,6 +69,8 @@ int main(){
 
         } while (choix != 0);
 }
+
+
 
 void ajouter(){
     if (n >= MAX) {
@@ -93,8 +95,10 @@ void ajouter(){
     
 }
 
+
+
 void afficher(){
-    if (n == MAX) {
+    if (n == 0) {
         printf("Le carnet de contacts est vide !\n");
         return;
     }
@@ -108,9 +112,10 @@ void afficher(){
 }
 
 
+
 void rechercher(){
 
-    if (n == MAX) {
+    if (n == 0) {
         printf("Le carnet de contacts est vide !\n");
         return;
     }
@@ -118,21 +123,28 @@ void rechercher(){
     printf("Nom du contact a rechercher : ");
     fgets(recherche, sizeof(recherche), stdin);
     recherche[strcspn(recherche,"\n")] = 0;
-
+    
+    int found = 0;
     for (int i = 0; i < n; i++){
         if (strcmp(carnet[i].nom, recherche) == 0){
             printf("\nContact %d:\n", i + 1);
             printf(" Nom: %s\n", carnet[i].nom);
             printf(" Telephone: %s\n", carnet[i].numero);
             printf(" Email: %s\n", carnet[i].email);
+            found = 1;
+            break;
         }
     }
-    printf("Contact non trouve.\n");
+    if (!found) {
+        printf("Contact non trouve.\n");
+    }
 
 }
 
+
+
 void modifier(){
-     if (n == MAX) {
+     if (n == 0) {
         printf("Le carnet de contacts est vide !\n");
         return;
     }
@@ -151,7 +163,7 @@ void modifier(){
 
             printf("Nouvelle adresse email : ");
             fgets(carnet[i].email, sizeof(carnet[i].email), stdin);
-            carnet[i].numero[strcspn(carnet[i].email, "\n")] = 0;
+            carnet[i].email[strcspn(carnet[i].email, "\n")] = 0;
 
             printf("Contact modifié avec succès.\n");
             return;
@@ -162,9 +174,10 @@ void modifier(){
 }
 
 
+
 void supprimer(){
 
-     if (n == MAX) {
+     if (n == 0) {
         printf("Le carnet de contacts est vide !\n");
         return;
     }
