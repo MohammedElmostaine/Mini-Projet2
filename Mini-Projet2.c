@@ -149,7 +149,7 @@ void modifier(){
         return;
     }
     char recherche[30];
-    printf("Nom du contact à rechercher : ");
+    printf("Nom du contact a rechercher : ");
     fgets(recherche, sizeof(recherche), stdin);
     recherche[strcspn(recherche,"\n")] = 0;
 
@@ -165,7 +165,7 @@ void modifier(){
             fgets(carnet[i].email, sizeof(carnet[i].email), stdin);
             carnet[i].email[strcspn(carnet[i].email, "\n")] = 0;
 
-            printf("Contact modifié avec succès.\n");
+            printf("Contact modifie avec succes.\n");
             return;
         }
     }
@@ -196,9 +196,5 @@ void supprimer(){
             printf("Contact supprime avec succes.\n");
             return;
         }
-        
-        
-
-
 }
 }
